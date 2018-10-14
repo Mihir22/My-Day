@@ -31,7 +31,14 @@
                             <outlet property="delegate" destination="MW4-MQ-oIf" id="3Bg-RY-L2Z"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Day" id="rrn-wL-gIr"/>
+                    <navigationItem key="navigationItem" title="My Day" id="rrn-wL-gIr">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="zkO-NA-6CY">
+                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="addButtonPressed:" destination="MW4-MQ-oIf" id="4N4-F3-xoV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pyl-aE-LTc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
