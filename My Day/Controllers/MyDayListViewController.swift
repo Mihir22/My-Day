@@ -10,11 +10,17 @@ import UIKit
 
 class MyDayListViewController: UITableViewController {
     
-   var itemArray = ["Find Mike","Buy eggos","Destroy Demogorgon"]
-
+   var itemArray = [Item]()
+  let defaluts = UserDefaults.standard
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        if let items = defaluts.array(forKey: "MyDayListArray") as? [Item]
+        {
+            itemArray = items
+        }
     }
     //MARK-TableViewDataSource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -22,7 +28,10 @@ class MyDayListViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyDayItemCell", for: indexPath)
-        cell.textLabel?.text = itemArray[indexPath.row]
+    
+        let item = itemArray[indexPath.row]
+        
+        cell.accessoryType = item.done ? .checkmark : .none
         return cell
     }
     //MARK - TableViewDelegate methods
@@ -47,8 +56,11 @@ class MyDayListViewController: UITableViewController {
         let alert = UIAlertController(title: "Add New Item to MyDay", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
-            self.itemArray.append(textField.text!)
+            let newItem = Item()
+            newItem.title = textField.text!
+            self.itemArray.append(newItem)
             self.tableView.reloadData()
+            self.defaluts.set(self.itemArray, forKey: "MyDayListArray")
         }
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Create New Item"
