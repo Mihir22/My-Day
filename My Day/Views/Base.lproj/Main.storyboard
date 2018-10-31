@@ -27,8 +27,8 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="MW4-MQ-oIf" id="qFd-DT-no4"/>
-                            <outlet property="delegate" destination="MW4-MQ-oIf" id="3Bg-RY-L2Z"/>
+                            <outlet property="dataSource" destination="MW4-MQ-oIf" id="lEt-i8-tch"/>
+                            <outlet property="delegate" destination="MW4-MQ-oIf" id="1dt-IY-iTU"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Day" id="rrn-wL-gIr">
