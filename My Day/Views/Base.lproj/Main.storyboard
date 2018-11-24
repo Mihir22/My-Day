@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Day-->
+        <!--Items-->
         <scene sceneID="tp9-0c-ZoJ">
             <objects>
                 <tableViewController id="MW4-MQ-oIf" customClass="MyDayListViewController" customModule="My_Day" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,9 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="EZ2-yu-buk">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="MW4-MQ-oIf" id="pk0-rj-RnC"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyDayItemCell" id="D7g-pD-jcW">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D7g-pD-jcW" id="cFb-JU-lQN">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -27,11 +35,11 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="MW4-MQ-oIf" id="lEt-i8-tch"/>
-                            <outlet property="delegate" destination="MW4-MQ-oIf" id="1dt-IY-iTU"/>
+                            <outlet property="dataSource" destination="MW4-MQ-oIf" id="ANT-pi-FqJ"/>
+                            <outlet property="delegate" destination="MW4-MQ-oIf" id="7LV-a2-Tks"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Day" id="rrn-wL-gIr">
+                    <navigationItem key="navigationItem" title="Items" id="rrn-wL-gIr">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zkO-NA-6CY">
                             <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -42,7 +50,46 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pyl-aE-LTc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1740" y="134"/>
+            <point key="canvasLocation" x="1774" y="-313"/>
+        </scene>
+        <!--My Day-->
+        <scene sceneID="Z8K-qb-5Jb">
+            <objects>
+                <tableViewController id="xVI-WU-e6W" customClass="CategoryViewController" customModule="My_Day" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dET-m5-thr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="fDU-DK-dvq">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fDU-DK-dvq" id="D1H-rf-5rG">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="MW4-MQ-oIf" kind="show" identifier="goToItems" id="kEk-kN-AV2"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xVI-WU-e6W" id="dVC-TY-e3I"/>
+                            <outlet property="delegate" destination="xVI-WU-e6W" id="wc1-oR-4M5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="My Day" id="FvG-fd-7aK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="H6M-VA-db1">
+                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="addButtonPressed:" destination="xVI-WU-e6W" id="DLF-Hb-N3U"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L8V-XV-d32" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="791" y="-313"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uwf-C8-CwU">
@@ -59,12 +106,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="MW4-MQ-oIf" kind="relationship" relationship="rootViewController" id="evq-oD-F6f"/>
+                        <segue destination="xVI-WU-e6W" kind="relationship" relationship="rootViewController" id="ne7-O6-ZfZ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0JO-1f-YIR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1044" y="133.5832083958021"/>
+            <point key="canvasLocation" x="-118" y="-312"/>
         </scene>
     </scenes>
 </document>
